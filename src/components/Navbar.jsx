@@ -129,30 +129,87 @@ const Navbar = () => {
     window.location.href = `mailto:${email}`
   }
 
+  const [openDropdown, setOpenDropdown] = useState(false);
+
+  const toggleDropdown = (e) => {
+    e.stopPropagation(); // Stop click from also triggering the NavLink
+    e.preventDefault(); // Prevent default navigation on arrow click
+    setOpenDropdown(!openDropdown);
+  };
+
+
   return (
     <div className="flex items-center justify-between py-5 font-medium">
       <Link to="/">
         <img src={assets.logo || "/placeholder.svg"} className="w-36" alt="" />
       </Link>
 
-      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
-        <NavLink to="/" className="flex flex-col items-center gap-1">
-          <p>HOME</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
-        </NavLink>
-        <NavLink to="/collection" className="flex flex-col items-center gap-1">
-          <p>COLLECTION</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
-        </NavLink>
-        <NavLink to="/about" className="flex flex-col items-center gap-1">
-          <p>ABOUT</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
-        </NavLink>
-        <NavLink to="/contact" className="flex flex-col items-center gap-1">
-          <p>CONTACT</p>
-          <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
-        </NavLink>
-      </ul>
+      <ul className="hidden sm:flex gap-5 text-sm text-gray-700 relative">
+      <NavLink to="/" className="flex flex-col items-center gap-1">
+        <p>HOME</p>
+        <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+      </NavLink>
+
+      {/* COLLECTION + Arrow */}
+      <div className="relative flex flex-col items-center">
+        <div className="flex items-center gap-1 cursor-pointer">
+          {/* COLLECTION Text Link */}
+          <NavLink to="/collection" className="flex flex-col items-center gap-1">
+            <p>COLLECTION</p>
+          </NavLink>
+
+          {/* Arrow Button */}
+          <button onClick={toggleDropdown}>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Dropdown */}
+        {openDropdown && (
+          <div className="absolute top-full mt-2 flex flex-col bg-white shadow-md rounded-md overflow-hidden min-w-[180px] z-50">
+            <NavLink
+              to="/collection?category=summer"
+              className="px-4 py-2 hover:bg-gray-100 text-left w-full whitespace-nowrap"
+              onClick={() => setOpenDropdown(false)}
+            >
+              Summer Collection
+            </NavLink>
+            <NavLink
+              to="/collection?category=festive"
+              className="px-4 py-2 hover:bg-gray-100 text-left w-full whitespace-nowrap"
+              onClick={() => setOpenDropdown(false)}
+            >
+              Festive Collection
+            </NavLink>
+            <NavLink
+              to="/collection?category=cord"
+              className="px-4 py-2 hover:bg-gray-100 text-left w-full whitespace-nowrap"
+              onClick={() => setOpenDropdown(false)}
+            >
+              Cord Collection
+            </NavLink>
+          </div>
+        )}
+      </div>
+
+      <NavLink to="/about" className="flex flex-col items-center gap-1">
+        <p>ABOUT</p>
+        <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+      </NavLink>
+
+      <NavLink to="/contact" className="flex flex-col items-center gap-1">
+        <p>CONTACT</p>
+        <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
+      </NavLink>
+    </ul>
 
       <div className="flex items-center gap-6">
         {/* Social Media Icons - Desktop */}
@@ -280,25 +337,62 @@ const Navbar = () => {
 
       {/* Sidebar menu for small screens */}
       <div
-        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-20 ${visible ? "w-full" : "w-0"}`}
+  className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all z-20 ${visible ? "w-full" : "w-0"}`}
+>
+  <div className="flex flex-col text-gray-600">
+    {/* Back button */}
+    <div onClick={() => setVisible(false)} className="flex items-center gap-4 p-3 cursor-pointer">
+      <img className="h-4 rotate-180" src={assets.dropdown_icon || "/placeholder.svg"} alt="Back" />
+      <p>Back</p>
+    </div>
+
+    {/* Normal Links */}
+    <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/">
+      HOME
+    </NavLink>
+
+    {/* Collection + Subcategories */}
+    <div className="flex flex-col border">
+      <NavLink
+        onClick={() => setVisible(false)}
+        className="py-2 pl-6"
+        to="/collection"
       >
-        <div className="flex flex-col text-gray-600">
-          <div onClick={() => setVisible(false)} className="flex items-center gap-4 p-3 cursor-pointer">
-            <img className="h-4 rotate-180" src={assets.dropdown_icon || "/placeholder.svg"} alt="" />
-            <p>Back</p>
-          </div>
-          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/">
-            HOME
-          </NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/collection">
-            COLLECTION
-          </NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/about">
-            ABOUT
-          </NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/contact">
-            CONTACT
-          </NavLink>
+        COLLECTION
+      </NavLink>
+
+      {/* Subcategories under collection */}
+      <div className="flex flex-col ml-4 border-t text-sm">
+        <NavLink
+          onClick={() => setVisible(false)}
+          className="py-2 pl-6 border-b"
+          to="/collection?category=summer"
+        >
+          Summer Collection
+        </NavLink>
+        <NavLink
+          onClick={() => setVisible(false)}
+          className="py-2 pl-6 border-b"
+          to="/collection?category=festive"
+        >
+          Festive Collection
+        </NavLink>
+        <NavLink
+          onClick={() => setVisible(false)}
+          className="py-2 pl-6"
+          to="/collection?category=cord"
+        >
+          Cord Collection
+        </NavLink>
+      </div>
+    </div>
+
+    <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/about">
+      ABOUT
+    </NavLink>
+    <NavLink onClick={() => setVisible(false)} className="py-2 pl-6 border" to="/contact">
+      CONTACT
+    </NavLink>
 
           {/* Social Media Links in Mobile Menu */}
           <div className="py-3 pl-6 border">
