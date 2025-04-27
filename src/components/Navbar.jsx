@@ -190,7 +190,7 @@ const Navbar = () => {
               Festive Collection
             </NavLink>
             <NavLink
-              to="/collection?category=cord"
+              to="/collection?category=cordset"
               className="px-4 py-2 hover:bg-gray-100 text-left w-full whitespace-nowrap"
               onClick={() => setOpenDropdown(false)}
             >
@@ -380,7 +380,7 @@ const Navbar = () => {
         <NavLink
           onClick={() => setVisible(false)}
           className="py-2 pl-6"
-          to="/collection?category=cord"
+          to="/collection?category=cordset"
         >
           Cord Collection
         </NavLink>

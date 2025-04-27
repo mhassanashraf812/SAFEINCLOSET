@@ -204,7 +204,7 @@ const Collection = () => {
     const queryParams = new URLSearchParams(location.search)
     const categoryFromUrl = queryParams.get("category")
     if (categoryFromUrl) {
-      setCollectionCategory(categoryFromUrl)
+      setCollectionCategory(categoryFromUrl.toLocaleLowerCase())
     } else {
       setCollectionCategory("")
     }
@@ -235,7 +235,7 @@ const Collection = () => {
 
     if (collectionCategory) {
       // If a URL category exists, filter by that
-      productsCopy = productsCopy.filter((item) => item.collection?.toLowerCase() === collectionCategory.toLowerCase())
+      productsCopy = productsCopy.filter((item) => item.collection?.toLowerCase().replaceAll(" ","") === collectionCategory.toLowerCase())
     }
 
     if (category.length > 0) {
@@ -332,7 +332,7 @@ const Collection = () => {
           {collectionCategory && (
             <div className="w-full mb-8 rounded-lg overflow-hidden">
               <img
-                src={`/${collectionCategory}.webp`}
+                src={`/${collectionCategory}.jpg`}
                 alt={`${collectionCategory} Banner`}
                 className="w-full h-auto object-cover"
               />

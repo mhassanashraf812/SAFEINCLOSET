@@ -42,9 +42,18 @@ const Orders = () => {
   return (
     <div className='border-t pt-16'>
 
-        <div className='text-2xl'>
-            <Title text1={'MY'} text2={'ORDERS'}/>
-        </div>
+       <div className="text-2xl">
+  <Title 
+    text1={<strong>Thank You!</strong>} 
+    text2={
+      <>
+        <strong>Your order has been placed successfully!</strong><br />
+        You will receive a confirmation message shortly.<br />
+      </>
+    }
+  />
+</div>
+
 
         <div>
             {
