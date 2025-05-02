@@ -52,7 +52,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <div className="border border-gray-400">
+    <div>
       {isMobile ? (
         // Mobile hero image
         <img

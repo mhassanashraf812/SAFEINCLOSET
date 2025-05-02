@@ -18,7 +18,7 @@ const BestSeller = () => {
       <div className='text-center text-3xl py-8'>
         <Title text1={'BEST'} text2={'SELLERS'}/>
         <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-        Your go-to destination for trendy and elegant fashion. We bring you carefully curated styles that blend comfort with sophistication. Explore our collection and redefine your wardrobe with timeless pieces.
+        Trendy, elegant fashion curated for comfort and sophistication. Redefine your wardrobe with timeless style.
         </p>
       </div>
 
