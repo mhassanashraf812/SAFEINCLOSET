@@ -7,7 +7,7 @@ import NewsletterBox from '../components/NewsletterBox'
 import { HeroParallaxDemo } from '../components/ui/HeroParallaxDemo'
 const Home = () => {
   return (
-    <div>
+    <div >
       <Hero />
       <LatestCollection/>
       <BestSeller/>

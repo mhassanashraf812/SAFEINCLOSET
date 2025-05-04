@@ -1,25 +1,101 @@
-// import React from 'react'
-// import { assets } from '../assets/assets'
+// import { useEffect, useState, useCallback } from "react"
+// import useEmblaCarousel from "embla-carousel-react"
+// import Autoplay from "embla-carousel-autoplay"
 
 // const Hero = () => {
+//   const [isMobile, setIsMobile] = useState(false)
+//   const [selectedIndex, setSelectedIndex] = useState(0)
+
+//   const desktopImages = [
+  
+//     "/summer.jpg", 
+//     "/summer.jpg",
+//     "/summer.jpg",
+//     "/summer.jpg",
+//     "/summer.jpg",
+
+   
+//   ]
+
+//   const mobileImages = [
+//     "/summer.jpg",
+//     "/summer.jpg",
+//     "/summer.jpg",
+//     "/summer.jpg",
+//     "/summer.jpg",
+    
+//   ]
+
+//   const autoplayOptions = {
+//     delay: 3000, 
+//     stopOnInteraction: false, 
+//   }
+
+//   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay(autoplayOptions)])
+
+//   const onSelect = useCallback(() => {
+//     if (!emblaApi) return
+//     setSelectedIndex(emblaApi.selectedScrollSnap())
+//   }, [emblaApi])
+
+//   useEffect(() => {
+//     if (!emblaApi) return
+
+//     // Call onSelect when the carousel is ready
+//     onSelect()
+
+//     emblaApi.on("select", onSelect)
+//     return () => {
+//       emblaApi.off("select", onSelect)
+//     }
+//   }, [emblaApi, onSelect])
+
+//   useEffect(() => {
+//     if (typeof window !== "undefined") {
+//       setIsMobile(window.innerWidth < 640)
+//       const handleResize = () => {
+//         setIsMobile(window.innerWidth < 640)
+//       }
+
+//       window.addEventListener("resize", handleResize)
+
+//       return () => window.removeEventListener("resize", handleResize)
+//     }
+//   }, [])
+
+//   const images = isMobile ? mobileImages : desktopImages
+
 //   return (
-//     <div className='flex flex-col sm:flex-row border border-gray-400'>
-//       {/* Hero Left Side */}
-//       <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
-//             <div className='text-[#414141]'>
-//                 <div className='flex items-center gap-2'>
-//                     <p className='w-8 md:w-11 h-[2px] bg-[#414141]'></p>
-//                     <p className=' font-medium text-sm md:text-base'>OUR BESTSELLERS</p>
-//                 </div>
-//                 <h1 className='prata-regular text-3xl sm:py-3 lg:text-5xl leading-relaxed'>Latest Arrivals</h1>
-//                 <div className='flex items-center gap-2'>
-//                     <p className='font-semibold text-sm md:text-base'>Wear Confidence</p>
-//                     <p className='w-8 md:w-11 h-[1px] bg-[#414141]'></p>
-//                 </div>
+//     <div className="w-full px-4 py-6">
+//       <div className="w-full overflow-hidden" ref={emblaRef}>
+//         <div className="flex">
+//           {images.map((image, index) => (
+//             <div className="min-w-0 flex-[0_0_100%]" key={index}>
+//               <div className="h-full">
+//                 <img
+//                   src={image || "/placeholder.svg"}
+//                   alt={`Hero image ${index + 1}`}
+//                   className="w-full h-auto object-contain"
+//                 />
+//               </div>
 //             </div>
+//           ))}
+//         </div>
 //       </div>
-//       {/* Hero Right Side */}
-//       <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
+
+//       {/* Pagination Dots */}
+//       <div className="flex justify-center mt-4 gap-2">
+//         {images.map((_, index) => (
+//           <button
+//             key={index}
+//             className={`w-3 h-3 rounded-full transition-all ${
+//               index === selectedIndex ? "bg-primary scale-110" : "bg-gray-300"
+//             }`}
+//             onClick={() => emblaApi?.scrollTo(index)}
+//             aria-label={`Go to slide ${index + 1}`}
+//           />
+//         ))}
+//       </div>
 //     </div>
 //   )
 // }
@@ -28,10 +104,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { assets } from "../assets/assets"
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false)
+
+  // Video sources for different screen sizes
+  const desktopVideo = "/SLIDER.mp4" // Path to your video in public folder
+  const mobileVideo = "/SLIDER.mp4" // Optional different video for mobile
 
   useEffect(() => {
     // Check if we're on the client side
@@ -51,23 +130,15 @@ const Hero = () => {
     }
   }, [])
 
+  // Choose video source based on device
+  const videoSource = isMobile ? mobileVideo : desktopVideo
+
   return (
-    <div>
-      {isMobile ? (
-        // Mobile hero image
-        <img
-          className="w-full"
-          src={assets.mobile_hero_img || "/placeholder.svg?width=640&height=400"}
-          alt="Mobile hero image"
-        />
-      ) : (
-        // Desktop hero image
-        <img
-          className="w-full"
-          src={assets.hero_img || "/placeholder.svg?width=1200&height=600"}
-          alt="Desktop hero image"
-        />
-      )}
+    <div className="w-full relative overflow-hidden">
+      <video className="w-full h-auto object-cover" autoPlay muted loop playsInline>
+        <source src={videoSource} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   )
 }

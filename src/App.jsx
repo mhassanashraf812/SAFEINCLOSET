@@ -41,6 +41,7 @@
 // }
 
 // export default App
+
 import { Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import Collection from "./pages/Collection"
@@ -62,7 +63,7 @@ import Verify from "./pages/Verify"
 import InstagramFeed from "./components/instagramfeed"
 const App = () => {
   return (
-    <div>
+    <div >
       <AnnouncementSlider />
       <div className="pt-0 px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
         <ToastContainer />
@@ -80,9 +81,8 @@ const App = () => {
           <Route path="/orders" element={<Orders />} />
           <Route path="/verify" element={<Verify />} />
         </Routes>
-      {/* <InstagramFeed/> */}
         <Footer />
-      </div>
+      </div >
       <WhatsAppButton phoneNumber="1234567890" message="Hello! I'm interested in your products." />
     </div>
   )
