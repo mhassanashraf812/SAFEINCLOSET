@@ -141,11 +141,14 @@ import { useLayoutEffect, useState } from "react"
 const Hero = () => {
   return (
     <div className="w-full relative overflow-hidden">
-      <img
-        src="/SLIDER.gif" // put your .gif in the public folder
-        alt="Hero animation"
+      <video
         className="w-full h-auto object-cover"
-        loading="eager" // ensures it loads immediately
+        src="/SLIDER.mp4"         // Place this in the /public folder
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"            // Ensures immediate loading
       />
     </div>
   )
