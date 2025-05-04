@@ -101,36 +101,52 @@
 // }
 
 // export default Hero
+
+
 import { useLayoutEffect, useState } from "react"
 
+// const Hero = () => {
+//   const [isMobile, setIsMobile] = useState(false)
+
+//   const desktopVideo = "/SLIDER.mp4"
+//   const mobileVideo = "/SLIDER.mp4"
+
+//   useLayoutEffect(() => {
+//     const updateIsMobile = () => setIsMobile(window.innerWidth < 640)
+//     updateIsMobile() // Initial check
+//     window.addEventListener("resize", updateIsMobile)
+//     return () => window.removeEventListener("resize", updateIsMobile)
+//   }, [])
+
+//   const videoSource = isMobile ? mobileVideo : desktopVideo
+
+//   return (
+//     <div className="w-full relative overflow-hidden">
+//       <video
+//         className="w-full h-auto object-cover"
+//         autoPlay
+//         muted
+//         loop
+//         playsInline
+//         preload="auto" // preload to avoid delay
+//       >
+//         <source src={videoSource} type="video/mp4" />
+//         Your browser does not support the video tag.
+//       </video>
+//     </div>
+//   )
+// }
+
+// export default Hero
 const Hero = () => {
-  const [isMobile, setIsMobile] = useState(false)
-
-  const desktopVideo = "/SLIDER.mp4"
-  const mobileVideo = "/SLIDER.mp4"
-
-  useLayoutEffect(() => {
-    const updateIsMobile = () => setIsMobile(window.innerWidth < 640)
-    updateIsMobile() // Initial check
-    window.addEventListener("resize", updateIsMobile)
-    return () => window.removeEventListener("resize", updateIsMobile)
-  }, [])
-
-  const videoSource = isMobile ? mobileVideo : desktopVideo
-
   return (
     <div className="w-full relative overflow-hidden">
-      <video
+      <img
+        src="/SLIDER.gif" // put your .gif in the public folder
+        alt="Hero animation"
         className="w-full h-auto object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto" // preload to avoid delay
-      >
-        <source src={videoSource} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+        loading="eager" // ensures it loads immediately
+      />
     </div>
   )
 }
