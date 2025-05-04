@@ -101,41 +101,33 @@
 // }
 
 // export default Hero
-"use client"
-
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false)
 
-  // Video sources for different screen sizes
-  const desktopVideo = "/SLIDER.mp4" // Path to your video in public folder
-  const mobileVideo = "/SLIDER.mp4" // Optional different video for mobile
+  const desktopVideo = "/SLIDER.mp4"
+  const mobileVideo = "/SLIDER.mp4"
 
-  useEffect(() => {
-    // Check if we're on the client side
-    if (typeof window !== "undefined") {
-      // Initial check
-      setIsMobile(window.innerWidth < 640)
-
-      // Add resize listener
-      const handleResize = () => {
-        setIsMobile(window.innerWidth < 640)
-      }
-
-      window.addEventListener("resize", handleResize)
-
-      // Clean up
-      return () => window.removeEventListener("resize", handleResize)
-    }
+  useLayoutEffect(() => {
+    const updateIsMobile = () => setIsMobile(window.innerWidth < 640)
+    updateIsMobile() // Initial check
+    window.addEventListener("resize", updateIsMobile)
+    return () => window.removeEventListener("resize", updateIsMobile)
   }, [])
 
-  // Choose video source based on device
   const videoSource = isMobile ? mobileVideo : desktopVideo
 
   return (
     <div className="w-full relative overflow-hidden">
-      <video className="w-full h-auto object-cover" autoPlay muted loop playsInline>
+      <video
+        className="w-full h-auto object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto" // preload to avoid delay
+      >
         <source src={videoSource} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

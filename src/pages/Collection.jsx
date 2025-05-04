@@ -332,7 +332,7 @@ const Collection = () => {
           {collectionCategory && (
             <div className="w-full mb-8 rounded-lg overflow-hidden">
               <img
-                src={`/${collectionCategory}.jpg`}
+                src={`/${collectionCategory}.svg`}
                 alt={`${collectionCategory} Banner`}
                 className="w-full h-auto object-cover"
               />
