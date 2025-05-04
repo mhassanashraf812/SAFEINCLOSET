@@ -65,7 +65,8 @@ const App = () => {
   return (
     <div >
       <AnnouncementSlider />
-      <div className="pt-0 px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+      {/* <div className="pt-0 px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]"> */}
+      <div className="pt-0 px-2 sm:px-4 md:px-6 lg:px-8">
         <ToastContainer />
         <Navbar />
         <SearchBar />

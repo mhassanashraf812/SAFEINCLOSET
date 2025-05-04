@@ -29,7 +29,8 @@ export default function AnnouncementSlider() {
   }
 
   return (
-    <div className="bg-primary text-primary-foreground py-1.5 -mx-4 sm:-mx-[5vw] md:-mx-[7vw] lg:-mx-[9vw]">
+    <div className="bg-primary text-primary-foregroundpt-0 px-2 sm:px-4 md:px-6 lg:px-8">
+
       <div className="flex items-center justify-center">
         <button
           onClick={goToPrevious}

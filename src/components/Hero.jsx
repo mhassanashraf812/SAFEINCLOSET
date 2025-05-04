@@ -7,8 +7,7 @@ const Hero = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   const desktopImages = [
-  
-    "/1.jpg", 
+
     "/2.jpg",
     "/3.jpg",
     "/4.jpg",
@@ -19,11 +18,11 @@ const Hero = () => {
 
   const mobileImages = [
    
-    "/1.jpg", 
-    "/2.jpg",
-    "/3.jpg",
-    "/4.jpg",
-    "/5.jpg",
+    "/1m.jpg", 
+    "/2m.jpg",
+    "/3m.jpg",
+    "/4m.jpg",
+   
 
     
   ]
