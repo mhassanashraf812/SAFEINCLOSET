@@ -150,14 +150,22 @@ const PlaceOrder = () => {
                 </div>
                 <input
     required
-    onChange={onChangeHandler}
+    onChange={(e) => {
+        // Remove all non-digit characters (like spaces, letters, etc.)
+        const cleaned = e.target.value.replace(/\D/g, '');
+        if (cleaned.length <= 11) {
+            onChangeHandler({ target: { name: "phone", value: cleaned } });
+        }
+    }}
     name="phone"
     value={formData.phone}
     className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
     type="text"
-    placeholder="Phone (e.g., 0333 0000000)"
-    pattern="^[0-9]{11}$"
-    title="Phone number must be 11 digits"
+    inputMode="numeric"
+    pattern="^\d{11}$"
+    title="Phone number must be exactly 11 digits"
+    maxLength={11}
+    placeholder="Phone (e.g., 03331234567)"
 />
 
             </div>
