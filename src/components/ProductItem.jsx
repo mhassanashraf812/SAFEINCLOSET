@@ -7,13 +7,30 @@ const ProductItem = ({id,image,name,price}) => {
     const {currency} = useContext(ShopContext);
 
   return (
-    <Link onClick={()=>scrollTo(0,0)} className='text-gray-700 cursor-pointer' to={`/product/${id}`}>
-      <div className=' overflow-hidden'>
-        <img className='hover:scale-110 transition ease-in-out' src={image[0]} alt="" />
-      </div>
-      <p className='pt-3 pb-1 text-sm'>{name}</p>
-      <p className=' text-sm font-medium'>{currency}{price}</p>
-    </Link>
+    // <Link onClick={()=>scrollTo(0,0)} className='text-gray-700 cursor-pointer' to={`/product/${id}`}>
+    //   <div className=' overflow-hidden'>
+    //     <img className='hover:scale-110 transition ease-in-out' src={image[0]} alt="" />
+    //   </div>
+    //   <p className='pt-3 pb-1 text-sm'>{name}</p>
+    //   <p className=' text-sm font-medium'>{currency}{price}</p>
+    // </Link>
+    <Link onClick={() => scrollTo(0, 0)} className="text-gray-700 cursor-pointer" to={`/product/${id}`}>
+  <div className="overflow-hidden relative">
+    <img
+      src={image[0]}
+      alt=""
+      className="transition-opacity duration-300 ease-in-out hover:opacity-0"
+    />
+    <img
+      src={image[1]}
+      alt=""
+      className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+    />
+  </div>
+  <p className="pt-3 pb-1 text-sm">{name}</p>
+  <p className="text-sm font-medium">{currency}{price}</p>
+</Link>
+
   )
 }
 
