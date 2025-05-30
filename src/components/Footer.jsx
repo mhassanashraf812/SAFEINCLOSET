@@ -68,7 +68,7 @@ const Footer = () => {
   return (
     <footer className="relative mt-40 pt-16 pb-8 bg-gradient-to-b from-white to-gray-50">
       {/* Decorative element */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-200 via-pink-400 to-pink-200"></div>
+      {/* <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-200 via-pink-400 to-pink-200"></div> */}
 
       <div className="container mx-auto px-4">
         {/* Beautiful Quote Section */}

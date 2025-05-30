@@ -190,7 +190,12 @@ const Product = () => {
         autoClose: 2000,
       })
       return
+
     }
+     window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
     addToCart(productData._id, size, color || "default")
     navigate("/cart") // 🚀 Redirect to cart
