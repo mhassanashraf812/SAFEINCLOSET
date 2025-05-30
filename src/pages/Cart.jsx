@@ -80,21 +80,14 @@
 
 // export default Cart
 
-import { useContext, useEffect, useState } from "react"
-import { ShopContext } from "../context/ShopContext"
-import Title from "../components/Title"
-import CartTotal from "../components/CartTotal"
-import { Trash2 } from "lucide-react"
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
+import Title from "../components/Title";
+import CartTotal from "../components/CartTotal";
+import { Trash2 } from "lucide-react";
 
 const Cart = () => {
-  const { products, currency, cartItems, updateQuantity, navigate } = useContext(ShopContext)
-  const [cartData, setCartData] = useState([])
-
-  useEffect(() => {
-    if (products.length > 0) {
-      setCartData(cartItems)
-    }
-  }, [cartItems, products])
+  const { products, currency, cartItems, updateQuantity, navigate } = useContext(ShopContext);
 
   return (
     <div className="border-t pt-6 md:pt-14 px-4 md:px-6 max-w-7xl mx-auto">
@@ -102,22 +95,26 @@ const Cart = () => {
         <Title text1={"YOUR"} text2={"CART"} />
       </div>
 
-      {cartData.length === 0 ? (
+      {cartItems.length === 0 ? (
         <div className="text-center py-16">
           <p className="text-gray-500 mb-6">Your cart is empty</p>
-          <button onClick={() => navigate("/")} className="bg-black text-white px-6 py-2 text-sm">
+          <button
+            onClick={() => navigate("/")}
+            className="bg-black text-white px-6 py-2 text-sm"
+          >
             CONTINUE SHOPPING
           </button>
         </div>
       ) : (
         <>
           <div className="space-y-4">
-            {cartData.map((item, index) => {
-              const productData = products.find((product) => product._id === item._id)
+            {cartItems.map((item) => {
+              const productData = products.find((product) => product._id === item._id);
+              const uniqueKey = `${item._id}-${item.size}-${item.color}`;
 
               return (
                 <div
-                  key={index}
+                  key={uniqueKey}
                   className="py-4 border-t border-b text-gray-700 flex flex-col sm:flex-row items-start sm:items-center gap-4"
                 >
                   <div className="flex items-start gap-4 flex-1">
@@ -147,15 +144,16 @@ const Cart = () => {
                     <div className="flex-1 sm:flex-none">
                       <input
                         onChange={(e) => {
-                          const value = e.target.value
-                          if (value !== "" && value !== "0") {
-                            updateQuantity(item._id, item.size, item.color, Number.parseInt(value))
+                          const value = e.target.value;
+                          const parsedValue = parseInt(value, 10);
+                          if (!isNaN(parsedValue) && parsedValue > 0) {
+                            updateQuantity(item._id, item.size, item.color, parsedValue);
                           }
                         }}
                         className="border w-full sm:w-16 px-2 py-1 text-center"
                         type="number"
                         min={1}
-                        defaultValue={item.quantity}
+                        value={item.quantity}
                       />
                     </div>
                     <button
@@ -167,7 +165,7 @@ const Cart = () => {
                     </button>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
 
@@ -187,7 +185,7 @@ const Cart = () => {
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
