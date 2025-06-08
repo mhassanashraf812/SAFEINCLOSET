@@ -129,8 +129,14 @@ const Cart = () => {
                       <p className="text-sm md:text-base font-medium">{productData?.name}</p>
                       <div className="flex flex-wrap items-center gap-2 mt-2">
                         <p className="text-sm font-medium">
-                          {currency}
-                          {productData?.price}
+                          {productData?.discountPrice ? (
+                            <>
+                              <span className="text-red-600">{currency}{productData.discountPrice}</span>
+                              <span className="ml-2 line-through text-gray-400">{currency}{productData.price}</span>
+                            </>
+                          ) : (
+                            <>{currency}{productData?.price}</>
+                          )}
                         </p>
                         <div className="flex flex-wrap gap-2">
                           <span className="px-2 py-1 text-xs border bg-slate-50">{item.size}</span>
