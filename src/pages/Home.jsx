@@ -8,7 +8,7 @@ import CategoryCollection from '../components/CategoryCollection'
 
 const Home = () => {
   return (
-    <div >
+    <div className='w-full'>
       <CategoryCollection
         title="Summer"
         filter="Summer"
@@ -31,9 +31,9 @@ const Home = () => {
         bannerDesktop="/banners/3piece-desktop.jpg"
         bannerMobile="/banners/3piece-mobile.jpg"
       />
-      <Hero />
+      {/* <Hero /> */}
        <LatestCollection/>
-      <BestSeller/>
+      {/* <BestSeller/> */}
       <OurPolicy/>
       {/* <CategoryCollection title="2 Piece" filter="2 Piece" filterField="category" /> */}
       {/* <NewsletterBox/> */}

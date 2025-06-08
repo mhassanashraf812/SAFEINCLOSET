@@ -392,7 +392,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="flex items-center justify-between py-5 font-medium px-4 relative">
+    <div className="fixed top-0 left-0 w-full z-50 bg-transparent px-4 sm:px-8 py-5 flex items-center justify-between font-medium">
       {/* MOBILE LEFT: Hamburger */}
       <div className="sm:hidden flex items-center">
         <img
@@ -410,12 +410,12 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* MOBILE CENTER: Logo */}
+      {/* MOBILE CENTER: Logo
       <div className="sm:hidden flex justify-center flex-grow">
         <Link to="/">
           <img src={assets.logo || "/placeholder.svg"} className="w-36" alt="logo" />
         </Link>
-      </div>
+      </div> */}
 
       {/* DESKTOP CENTER: Social Icons */}
       <div className="hidden sm:flex items-center gap-3 mx-auto">

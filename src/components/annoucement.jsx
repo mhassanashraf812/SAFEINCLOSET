@@ -29,7 +29,7 @@ export default function AnnouncementSlider() {
   }
 
   return (
-    <div className="bg-primary  border-b border-gray-900 text-red-500 px-2 sm:px-4 md:px-6 lg:px-8">
+    <div className="bg-primary  border-b  text-primary-foreground px-2 sm:px-4 md:px-6 lg:px-8">
 
       <div className="flex items-center justify-center">
         <button
