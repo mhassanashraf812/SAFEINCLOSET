@@ -124,8 +124,8 @@ const CategoryCollection = ({
       </div>
 
       {/* Product Grid */}
-      {/* <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 px-2 sm:px-4"> */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-1 sm:gap-4 px-0 sm:px-4">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-1 sm:gap-4 px-0">
+      {/* <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-1 sm:gap-4 px-0 sm:px-4"> */}
         {filteredProducts.map((item, index) => (
           <ProductItem
             key={index}
