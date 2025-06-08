@@ -403,12 +403,12 @@ const Navbar = () => {
         />
       </div>
 
-      {/* DESKTOP LEFT: Logo */}
+      {/* DESKTOP LEFT: Logo
       <div className="hidden sm:flex items-center flex-shrink-0">
         <Link to="/">
           <img src={assets.logo || "/placeholder.svg"} className="w-36" alt="logo" />
         </Link>
-      </div>
+      </div> */}
 
       {/* MOBILE CENTER: Logo
       <div className="sm:hidden flex justify-center flex-grow">
@@ -419,7 +419,7 @@ const Navbar = () => {
 
       {/* DESKTOP CENTER: Social Icons */}
       <div className="hidden sm:flex items-center gap-3 mx-auto">
-        <InstagramIcon
+        {/* <InstagramIcon
           onClick={() => openSocialLink("https://www.instagram.com/safeincloset")}
           className="w-5 h-5 cursor-pointer text-[#E1306C] hover:opacity-80 transition-colors"
           fontSize="small"
@@ -438,7 +438,7 @@ const Navbar = () => {
           className="cursor-pointer hover:opacity-80 transition-colors"
         >
           <TikTok />
-        </div>
+        </div> */}
       </div>
 
       {/* MOBILE RIGHT: Search + Cart */}
@@ -514,6 +514,20 @@ const Navbar = () => {
                   onClick={() => setOpenDropdown(false)}
                 >
                   Cord Collection
+                </NavLink>
+                <NavLink
+                  to="/collection?category=casual"
+                  className="px-4 py-2 hover:bg-gray-100 text-left w-full whitespace-nowrap"
+                  onClick={() => setOpenDropdown(false)}
+                >
+                  Casual Collection
+                </NavLink>
+                <NavLink
+                  to="/collection?category=ThreePiece"
+                  className="px-4 py-2 hover:bg-gray-100 text-left w-full whitespace-nowrap"
+                  onClick={() => setOpenDropdown(false)}
+                >
+                 Three Piece Collection
                 </NavLink>
               </div>
             )}

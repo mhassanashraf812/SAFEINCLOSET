@@ -24,15 +24,24 @@ const Home = () => {
         bannerDesktop="/banners/cordset-desktop.jpg"
         bannerMobile="/banners/cordset-mobile.jpg"
       />
-      <CategoryCollection
-        title="3 Piece"
-        filter="3 Piece"
-        filterField="category"
+     
+        <CategoryCollection
+        title="casual"
+        filter="casual"
+        filterField="collection"
+        bannerDesktop="/banners/casual-desktop.jpg"
+        bannerMobile="/banners/casual-mobile.jpg"
+        noTopMargin
+      />
+       <CategoryCollection
+        title="ThreePiece"
+        filter="ThreePiece"
+        filterField="collection"
         bannerDesktop="/banners/3piece-desktop.jpg"
         bannerMobile="/banners/3piece-mobile.jpg"
       />
       {/* <Hero /> */}
-       <LatestCollection/>
+       {/* <LatestCollection/> */}
       {/* <BestSeller/> */}
       <OurPolicy/>
       {/* <CategoryCollection title="2 Piece" filter="2 Piece" filterField="category" /> */}
