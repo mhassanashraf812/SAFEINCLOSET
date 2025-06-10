@@ -642,6 +642,20 @@ const Navbar = () => {
               >
                 Cord Collection
               </NavLink>
+              <NavLink
+                onClick={() => setVisible(false)}
+                className="py-2 pl-6"
+                to="/collection?category=casual"
+              >
+                Casual Collection
+              </NavLink>
+              <NavLink
+                onClick={() => setVisible(false)}
+                className="py-2 pl-6"
+                to="/collection?category=ThreePiece"
+              >
+                Three Piece Collection
+              </NavLink>
             </div>
           </div>
 
